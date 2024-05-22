@@ -19,7 +19,7 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: 100, // Set your desired width
               height: 100, // Set your desired height
               child: Image(image: AssetImage('assets/images/job.png')),

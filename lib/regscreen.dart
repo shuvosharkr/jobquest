@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 //Done
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:jobquest/loginscreen.dart';
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:jobquest/loginscreen.dart';
 
 class RegScreen extends StatefulWidget {
   const RegScreen({super.key});
@@ -51,7 +51,7 @@ Future<void> signUP(BuildContext context) async {
           password: _passwordController.text.trim(),
         );
 
-_firestore1.collection("Users").doc(userCredential.user!.uid).set(
+_firestore1.collection("users").doc(userCredential.user!.uid).set( //changed "Users" to "users"
   {
     'uid':userCredential.user!.uid,
     'email': _emailController,
