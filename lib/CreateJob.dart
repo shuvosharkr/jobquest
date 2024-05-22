@@ -165,7 +165,17 @@ class _CreateJobState extends State<CreateJob> {
                       //   height: 50,
                       // ),
                       GestureDetector(
-                        onTap: () => postJob(),
+                        onTap: () async => {
+                          postJob(),
+                          await Future.delayed(const Duration(seconds: 2)),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ),
+                          )
+
+                        },
                         child: Container(
                           height: 50,
                           width: 300,

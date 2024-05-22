@@ -42,8 +42,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xff607274),
       appBar: AppBar(
-        title: const Text('Home Page'),
+        backgroundColor: const Color(0xff607274),
+        title: const Text('Home Page', style:TextStyle(color: Color(0xffFAEED1))),
         centerTitle: true, // Center the title
         actions: [
           IconButton(
@@ -98,10 +100,13 @@ class _HomePageState extends State<HomePage> {
                               onPressed: () {
                               Navigator.of(context).push(
                               MaterialPageRoute(builder: (context) => CreateJob()),
-                            );
-            },
-            child: const Text('Go to Create Job'),
-          ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xffFAEED1)
+                              ),
+                                child: const Text('Go to Create Job', style: TextStyle(color: Color(0xff607274))),
+                            ),
                     ),
                   ],
                 ),
