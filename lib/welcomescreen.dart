@@ -47,7 +47,8 @@ class WelcomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: const Color.fromARGB(255, 103, 57, 229), width: 2),
+                  border: Border.all(
+                      color: const Color.fromARGB(255, 103, 57, 229), width: 2),
                 ),
                 child: Center(
                   child: Text(

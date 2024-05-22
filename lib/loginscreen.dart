@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
         // User is signed in
         final email1 = user.email;
         print('Current user email: $email1');
-  
+
         // Navigate to HomePage and pass the current user's email
         Navigator.push(
           context,

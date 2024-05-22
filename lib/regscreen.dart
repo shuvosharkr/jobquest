@@ -21,7 +21,7 @@ class _RegScreenState extends State<RegScreen> {
   // Firestore reference
   final CollectionReference _usersCollection =
       FirebaseFirestore.instance.collection('users');
-  final FirebaseFirestore _firestore1= FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore1 = FirebaseFirestore.instance;
 
   bool PasswordConfirmed() {
     return _passwordController.text.trim() ==
@@ -29,66 +29,72 @@ class _RegScreenState extends State<RegScreen> {
   }
 
   Future<bool> isUsernameTaken(String username) async {
-    final QuerySnapshot result = await _usersCollection
-        .where('username', isEqualTo: username)
-        .get();
+    final QuerySnapshot result =
+        await _usersCollection.where('username', isEqualTo: username).get();
     return result.docs.isNotEmpty;
   }
 
-Future<void> signUP(BuildContext context) async {
-  if (PasswordConfirmed()) {
-    // Check if username already exists
-    bool usernameTaken =
-        await isUsernameTaken(_userController.text.trim());
+  Future<void> signUP(BuildContext context) async {
+    if (PasswordConfirmed()) {
+      // Check if username already exists
+      bool usernameTaken = await isUsernameTaken(_userController.text.trim());
 
-    if (usernameTaken) {
-      _showErrorDialog(context, "Username is already taken.");
-    } else {
-      try {
-        // Create user in FirebaseAuth
-        UserCredential userCredential= await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
-        );
+      if (usernameTaken) {
+        _showErrorDialog(context, "Username is already taken.");
+      } else {
+        try {
+          // Create user in FirebaseAuth
+          UserCredential userCredential =
+              await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: _emailController.text.trim(),
+            password: _passwordController.text.trim(),
+          );
 
-_firestore1.collection("Users").doc(userCredential.user!.uid).set(
-  {
-    'uid':userCredential.user!.uid,
-    'email': _emailController,
-  }
-);
+          //add user data to firestore
+          await _usersCollection.doc(userCredential.user!.uid).set({
+            'uid': userCredential.user!.uid,
+            'username': _userController.text.trim(),
+            'email': _emailController.text.trim(),
+            'bio': 'Empty Bio', // Default bio value
+          });
 
+// _firestore1.collection("Users").doc(userCredential.user!.uid).set(
+//   {
+//     'uid':userCredential.user!.uid,
+//     'email': _emailController,
+//   }
+// );
 
-        _showErrorDialog(context, "SignUP is Successful. You can SignIn now");
-        await Future.delayed(const Duration(seconds: 2));
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginScreen(),
-          ),
-        );
+          _showErrorDialog(context, "SignUP is Successful. You can SignIn now");
+          await Future.delayed(const Duration(seconds: 2));
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginScreen(),
+            ),
+          );
 
-        // Add user data to Firestore
-        await _usersCollection.add({
-          'username': _userController.text.trim(),
-          'email': _emailController.text.trim(),
-          // Add other user data as needed
-        });
-
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'email-already-in-use') {
-          _showErrorDialog(context, "The email address is already in use by another account.");
-        } else if (e.code == 'weak-password') {
-          _showErrorDialog(context, "Password is too weak.");
-        } else {
-          _showErrorDialog(context, "Registration failed. Please try again.");
+          // // Add user data to Firestore
+          // await _usersCollection.add({
+          //   'username': _userController.text.trim(),
+          //   'email': _emailController.text.trim(),
+          //   // Add other user data as needed
+          // });
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'email-already-in-use') {
+            _showErrorDialog(context,
+                "The email address is already in use by another account.");
+          } else if (e.code == 'weak-password') {
+            _showErrorDialog(context, "Password is too weak.");
+          } else {
+            _showErrorDialog(context, "Registration failed. Please try again.");
+          }
         }
       }
+    } else {
+      _showErrorDialog(context, "Passwords do not match");
     }
-  } else {
-    _showErrorDialog(context, "Passwords do not match");
   }
-}
 
   void _showErrorDialog(BuildContext context, String message) {
     showDialog(
