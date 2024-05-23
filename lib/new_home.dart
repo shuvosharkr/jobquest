@@ -1,8 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobquest/HomePage.dart';
+import 'package:jobquest/JobWall.dart';
+import 'package:jobquest/ReviewsPage.dart';
 import 'package:jobquest/drawer.dart';
 import 'package:jobquest/loginscreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:jobquest/profile_page.dart';
 
 class NewHome extends StatelessWidget {
@@ -12,7 +13,7 @@ class NewHome extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ProfilePage(),
+        builder: (context) => const ProfilePage(),
       ),
     );
   }
@@ -22,7 +23,7 @@ class NewHome extends StatelessWidget {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => LoginScreen(),
+        builder: (context) => const LoginScreen(),
       ),
     );
   }
@@ -71,18 +72,18 @@ class NewHome extends StatelessWidget {
                   // Navigate to Review Wall (HomePage)
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
+                    MaterialPageRoute(builder: (context) => const ReviewsPage()),
                   );
                 },
-                child: Text("Review Wall"),
+                child: const Text("Review Wall"),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   // Navigate to Job Wall
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => JobWall()),
+                    MaterialPageRoute(builder: (context) => const JobWall()),
                   );
                 },
                 child: Text("Job Wall"),
@@ -95,17 +96,3 @@ class NewHome extends StatelessWidget {
   }
 }
 
-class JobWall extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Job Wall"),
-        backgroundColor: Colors.blueGrey,
-      ),
-      body: Center(
-        child: Text("This is the Job Wall."),
-      ),
-    );
-  }
-}

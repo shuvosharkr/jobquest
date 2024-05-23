@@ -1,10 +1,9 @@
 //Done
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:jobquest/ForgetPasswordPage.dart';
-import 'package:jobquest/HomePage.dart';
-import 'package:jobquest/RegScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:jobquest/ForgetPasswordPage.dart';
+import 'package:jobquest/RegScreen.dart';
 import 'package:jobquest/new_home.dart';
 
 class LoginScreen extends StatefulWidget {

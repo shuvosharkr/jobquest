@@ -2,20 +2,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobquest/drawer.dart';
-import 'package:jobquest/loginscreen.dart';
-import 'package:jobquest/profile_page.dart';
-import 'package:jobquest/text_field.dart';
 import 'package:jobquest/wall_post.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class ReviewsPage extends StatefulWidget {
+  const ReviewsPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ReviewsPage> createState() => _ReviewsPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ReviewsPageState extends State<ReviewsPage> {
   //user
   final currentUser = FirebaseAuth.instance.currentUser!;
 
@@ -112,11 +108,24 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: MyTextField(
-                      controller: textController,
-                      hintText: "Post a job on the wall",
-                      obsecureText: false,
-                    ),
+                    child: TextField(
+      controller: textController,
+      obscureText: true,
+      decoration: InputDecoration(
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        fillColor: Colors.grey.shade200,
+        filled: true,
+        hintText: "Post a review",
+        hintStyle: TextStyle(
+          color: Colors.grey[700],
+        ),
+      ),
+    )
                   ),
 
                   //post button
