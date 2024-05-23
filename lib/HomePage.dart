@@ -60,41 +60,13 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  //navigate to profilepage
-  void goToProfilePage() {
-    Navigator.pop(context);
-
-    //go to profile page
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ProfilePage(),
-      ),
-    );
-  }
-
-  void signOut() async {
-    await FirebaseAuth.instance.signOut();
-    Navigator.pop(context); // Close the drawer
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LoginScreen(),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('The Wall'),
+        title: const Text('Review Wall'),
         backgroundColor: Color.fromARGB(255, 233, 230, 230),
         centerTitle: true, // Center the title
-      ),
-      drawer: MyDrawer(
-        onProfileTap: goToProfilePage,
-        onSignoutTap: signOut,
       ),
       body: Center(
         child: Column(
