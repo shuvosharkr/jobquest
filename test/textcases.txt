@@ -1,0 +1,14 @@
+Test Case 1:
+Input: Valid Job Post
+Expected output: True
+Actual output: True
+
+Test Case 2:
+Input: Invalid Job Post
+Expected output: False
+Actual output: False
+
+Test Case 3:
+Input: Valid Job Post
+Expected output: True
+Actual output: True
