@@ -30,6 +30,5 @@ class MyTextField extends StatelessWidget {
         ),
       ),
     );
-    return const Placeholder();
   }
 }
