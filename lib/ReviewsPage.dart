@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jobquest/wall_post.dart';
+import 'package:jobquest/my_text_field.dart';
 
 class ReviewsPage extends StatefulWidget {
   const ReviewsPage({super.key});
@@ -102,30 +103,17 @@ class _ReviewsPageState extends State<ReviewsPage> {
               ),
             ),
 
-            //post msg
+ //post msg
             Padding(
               padding: const EdgeInsets.all(25.0),
               child: Row(
                 children: [
                   Expanded(
-                    child: TextField(
-      controller: textController,
-      obscureText: true,
-      decoration: InputDecoration(
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-        ),
-        fillColor: Colors.grey.shade200,
-        filled: true,
-        hintText: "Post a review",
-        hintStyle: TextStyle(
-          color: Colors.grey[700],
-        ),
-      ),
-    )
+                    child: MyTextField(
+                      controller: textController,
+                      hintText: "Post a Review",
+                      obsecureText: false,
+                    ),
                   ),
 
                   //post button
