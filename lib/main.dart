@@ -1,7 +1,9 @@
 //Done
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:jobquest/chat/ChatPage.dart';
 import 'package:jobquest/firebase_options.dart';
+import 'package:jobquest/loginscreen.dart';
 import 'package:jobquest/welcomescreen.dart'; // Import Firebase core
 // Import firebase_option.dart
 // Import splashscreen.dart
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: WelcomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
