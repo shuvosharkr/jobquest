@@ -3,11 +3,13 @@ import 'package:jobquest/my_list_title.dart';
 
 class MyDrawer extends StatelessWidget {
   final void Function()? onProfileTap;
+  final void Function()? onChatTap;
   final void Function()? onSignoutTap;
 
   const MyDrawer({
     super.key,
     required this.onProfileTap,
+    required this.onChatTap,
     required this.onSignoutTap,
   });
 
@@ -35,7 +37,12 @@ class MyDrawer extends StatelessWidget {
                 text: 'H O M E',
                 onTap: () => Navigator.pop(context),
               ),
-
+              
+              MyListTitle(
+                icon: Icons.chat,
+                text: 'C H A T',
+                onTap: onChatTap,
+              ),
               //Profile list tile
               MyListTitle(
                 icon: Icons.person,
@@ -58,4 +65,5 @@ class MyDrawer extends StatelessWidget {
       ),
     );
   }
+  
 }

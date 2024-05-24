@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jobquest/JobWall.dart';
 import 'package:jobquest/ReviewsPage.dart';
+import 'package:jobquest/chat/ChatPage.dart';
 import 'package:jobquest/drawer.dart';
 import 'package:jobquest/loginscreen.dart';
 import 'package:jobquest/profile_page.dart';
@@ -17,6 +18,16 @@ class NewHome extends StatelessWidget {
       ),
     );
   }
+  
+  void goToChatPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ChatPage(), // Remove 'const'
+    ),
+  );
+}
+
 
   void signOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
@@ -61,6 +72,7 @@ class NewHome extends StatelessWidget {
         ),
         drawer: MyDrawer(
           onProfileTap: () => goToProfilePage(context),
+          onChatTap: () => goToChatPage(context),
           onSignoutTap: () => signOut(context),
         ),
         body: Center(
