@@ -118,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 25.0),
                   child: Text(
-                    'My Details',
+                    'My Reviews',
                     style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                   ),
                 ),
